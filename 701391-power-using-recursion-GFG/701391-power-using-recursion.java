@@ -11,6 +11,28 @@ class Solution {
 		} else {
 			return tmp * n;
 		}
+		
+		/*
+		// Iterative function for pow(x, y)
+		
+		int res = 1;
+
+          while (y > 0) {
+
+              // if y is odd, last bit is 1 so include this power
+              if ((y & 1) == 1) {
+                  res = res * x;
+              }
+
+              // square the base
+              x = x * x;
+
+              // move to next bit
+              y = y >> 1;
+          }
+
+          return res;
+		*/
 	}
 }
 
