@@ -5,7 +5,8 @@ class Solution {
 			x = x ^ n;
 		}
 		
-		int k = x & (~(x - 1));
+		//int k = x & (~(x - 1));
+		int k = x & -x; // ~(x - 1) = -x
 		int res1 = 0, res2 = 0;
 		for (int i = 0; i < arr.length; i++) {
 			if ((arr[i] & k) != 0) {
