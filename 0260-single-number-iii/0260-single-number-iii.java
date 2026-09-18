@@ -5,8 +5,9 @@ class Solution {
             x = x ^ n;
         }
 
-        // It finds a nu,ber which has only 1 bit set and the set bit corresponds to last set bit of x;
-        int k = x & (~(x - 1));
+        // It finds a number which has only 1 bit set and the set bit corresponds to last set bit of x;
+        // int k = x & (~(x - 1));
+        int k = x & -x; // ~(x - 1) = -x ----> as we know ~x = -(x+1)
 
         int res1 = 0, res2 = 0;
         for (int i = 0; i < nums.length; i++) {
