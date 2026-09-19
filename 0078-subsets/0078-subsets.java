@@ -4,6 +4,7 @@ class Solution {
         int n = nums.length;
         int powSize = (1 << n); // 1 * 2^n = 2^n (x << y = x*2^y)
 
+        // All Possible subsets - Power Set using Bitwise
         for (int i = 0; i < powSize; i++) {
             List<Integer> list = new ArrayList<>();
             for (int j = 0; j < n; j++) {
