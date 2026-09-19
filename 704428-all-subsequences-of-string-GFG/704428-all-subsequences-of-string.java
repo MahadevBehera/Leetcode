@@ -8,7 +8,7 @@ class Solution {
 			StringBuilder sb = new StringBuilder();
 			for (int j = 0; j < n; j++) {
 				if ((i & (1 << j)) != 0) { // check the bit is set or not
-					sb.append(String.valueOf(s.charAt(j)));
+					sb.append(s.charAt(j));
 				}
 			}
 			result.add(sb.toString());
