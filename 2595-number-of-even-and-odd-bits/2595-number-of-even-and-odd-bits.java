@@ -4,11 +4,12 @@ class Solution {
         int odd = 0;
         int index = 0;
         while (n > 0) {
+            boolean flag = ((n & 1) == 1);
             if (index % 2 == 0) {
-                if ((n & 1) == 1)
+                if (flag)
                     even++;
             } else {
-                if ((n & 1) == 1)
+                if (flag)
                     odd++;
             }
             index++;
