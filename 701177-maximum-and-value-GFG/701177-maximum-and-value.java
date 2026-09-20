@@ -3,8 +3,8 @@ class Solution {
 		int n = arr.length;
 		int result = 0;
 		
-		// iterate over total of 18 bits(positive integers only) from MSB to LSB
-		for (int bit = 18; bit >= 0; bit--) { // checking each bit, by looping bit by bit
+		// iterate over total of 32 bits from MSB to LSB
+		for (int bit = 31; bit >= 0; bit--) { // checking each bit, by looping bit by bit
 			int mask = (1 << bit); // moving 1 bit to desired bit to do further operation
 			int pattern = result | mask; // to preserve the values of previous bits doing OR operation
 			int count = checkBit(pattern, arr); // find the count of array element having Set ('1') in MSB
