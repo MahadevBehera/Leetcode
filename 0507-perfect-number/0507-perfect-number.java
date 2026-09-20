@@ -9,7 +9,7 @@ class Solution {
                 }
             }
         }
-        return (sum - num) == num;
+        return (sum - num) == num; // (sum - num), because to remove the num it self from divisors 
     }
 }
 
