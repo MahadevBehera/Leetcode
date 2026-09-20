@@ -5,7 +5,7 @@ class Solution {
         int index = 0;
         while (n > 0) {
             boolean flag = ((n & 1) == 1);
-            if (index % 2 == 0) {
+            if ((index & 1) == 0) { // checking index is even or not, similar to (index % 2 == 0)
                 if (flag)
                     even++;
             } else {
