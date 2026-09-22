@@ -4,9 +4,9 @@ class Solution {
 		// Means after right shift n by 1 and doing AND operation between n with result,
 		// then if there is max 1 consecutive set bit, the final result after AND will be zero.
 		// Otherwise the result will contain 1's, mean value will be either 1 or more than 1.
-		if((n & (n >> 1)) >= 1) {
-		    return false;
-		} 
+		if ((n & (n>> 1)) >= 1) {
+			return false;
+		}
 		return true;
 	}
 }
