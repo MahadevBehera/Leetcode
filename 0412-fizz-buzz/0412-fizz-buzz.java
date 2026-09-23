@@ -1,22 +1,16 @@
 class Solution {
     public List<String> fizzBuzz(int n) {
-        String fizz = "Fizz";
-        String buzz = "Buzz";
-        String fizzBuzz = fizz + buzz;
         List<String> result = new ArrayList<>();
 
         for (int i = 1; i <= n; i++) {
-            boolean isFizz = (i % 3 == 0);
-            boolean isBuzz = (i % 5 == 0);
-
-            if (isFizz && isBuzz)
-                result.add(fizzBuzz);
-            else if (isFizz)
-                result.add(fizz);
-            else if (isBuzz)
-                result.add(buzz);
+            if (i % 15 == 0)
+                result.add("FizzBuzz");
+            else if (i % 3 == 0)
+                result.add("Fizz");
+            else if (i % 5 == 0)
+                result.add("Buzz");
             else
-                result.add(i + "");
+                result.add(String.valueOf(i));
         }
         return result;
     }
