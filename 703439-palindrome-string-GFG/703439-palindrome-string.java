@@ -1,15 +1,15 @@
 class Solution {
 	boolean isPalindrome(String s) {
-		return isPal(s, 0, s.length() - 1);
-	}
-	
-	boolean isPal(String str, int start, int end) {
-		if (start >= end) {
-			return true;
+		int start = 0;
+		int end = s.length() - 1;
+		while(start < end) {
+		    if(s.charAt(start) != s.charAt(end)) {
+		        return false;
+		    }
+		    start++;
+		    end--;
 		}
-		
-		return ((str.charAt(start) == str.charAt(end))
-		 && isPal(str, start + 1, end - 1));
+		return true;
 	}
 }
 
