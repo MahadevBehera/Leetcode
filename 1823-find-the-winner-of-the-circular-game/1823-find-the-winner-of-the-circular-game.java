@@ -7,10 +7,12 @@ class Solution {
            josephus(n - 1, k) considers the original
            position k%n + 1 as position 1 
         */
+
         // Recursive Solution
         //if (n == 1)
         //    return 1;
         //return ((findTheWinner(n - 1, k)) + (k - 1)) % n + 1;
+
         /*
         return josephus(n, k) + 1; // if we will use 0th based function to calculate then add 1.
         */
@@ -21,6 +23,7 @@ class Solution {
         while (i <= n) {
             // for the smaller problem, I mean the small set of person if the (ans + k) 
             // is greater than i (current iteration max person as we start from 1 and going till n)
+            // For 1 person, the safe position is obviously 1.
             ans = (ans + k) % i;
             i++;
         }
