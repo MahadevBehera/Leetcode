@@ -30,7 +30,6 @@ class Solution {
     (k+2) % 5 0 <--- 2
     
     jos(n,k) = (jos(n-1, k) + k) % n
-    
     */
 }
 
