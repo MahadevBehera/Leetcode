@@ -1,0 +1,1 @@
+Trick : (nums[i] - 1) is equal to a valid index in the array
