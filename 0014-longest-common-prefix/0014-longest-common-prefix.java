@@ -1,20 +1,22 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
-        // Optimised approach using sorting 
-        // after sorting the 1st and last(strs.length - 1) String only we need to compare, we will get common longest prefix
-        Arrays.sort(strs);
-        String first = strs[0];
-        String last = strs[strs.length - 1];
-        StringBuilder longestCommonPrefix = new StringBuilder();
-        for (int i = 0; i < Math.min(first.length(), last.length()); i++) {
-            if (first.charAt(i) == last.charAt(i)) {
-                longestCommonPrefix.append(first.charAt(i));
-            } else {
-                return longestCommonPrefix.toString(); // return immediately when not matching the characters 
+        // This is expected Efficient approach, avoid sorting the array
+        // This approach -  O(n * m) Time and O(m) Space
+        String longestCommonPrefix = strs[0];
+        StringBuilder tempCommon = new StringBuilder();
+        for (int index = 1; index < strs.length; index++) {
+            int wordLen = strs[index].length();
+            int len = longestCommonPrefix.length(); // it should be here as longestCommonPrefix is updated in each iteration 
+            int i = 0;
+            while (i < len && i < wordLen && (longestCommonPrefix.charAt(i) == strs[index].charAt(i))) {
+                tempCommon.append(longestCommonPrefix.charAt(i));
+                i++;
             }
-        }
 
-        return longestCommonPrefix.toString();
+            longestCommonPrefix = tempCommon.toString();
+            tempCommon.setLength(0); // clearing the tempCommon, means reseting to empty
+        }
+        return longestCommonPrefix;
     }
 }
 
