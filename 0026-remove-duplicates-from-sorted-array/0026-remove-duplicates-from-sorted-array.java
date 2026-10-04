@@ -1,5 +1,6 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
+        if (nums.length == 0) return 0;
         int k = 1; // we need to replace from 2nd element if there is duplicate for 1st element
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] != nums[i - 1]) {
