@@ -7,7 +7,7 @@ class Solution {
 
     public void findPermute(int[] nums, int index, List<List<Integer>> res) {
         // Base case - add nums to list
-        if (index == nums.length) {
+        if (index >= nums.length) {
             ArrayList<Integer> list = new ArrayList<>();
             for (int n : nums) {
                 list.add(n);
@@ -25,7 +25,7 @@ class Solution {
             // Make Recursive call by fixing current position
             findPermute(nums, index + 1, res);
 
-            // Swap again to retain the previous String, so that we can perform next combination
+            // Backtrack - Swap again to retain the previous String, so that we can perform next combination
             temp = nums[index];
             nums[index] = nums[i];
             nums[i] = temp;
