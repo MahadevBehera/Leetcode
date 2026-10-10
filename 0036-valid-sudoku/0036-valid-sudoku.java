@@ -43,7 +43,7 @@ class Solution {
         return true;
     }
 
-    // validate boxs
+    // validate 3*3 boxs
     public boolean validateBoxs(char[][] board) {
         for (int startRow = 0; startRow < 9; startRow += 3) { // to get next box startRow = startRow + 3
             int endRow = startRow + 2;
