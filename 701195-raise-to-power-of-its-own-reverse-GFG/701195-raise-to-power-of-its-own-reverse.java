@@ -6,7 +6,7 @@ class Solution {
 			reverse = (reverse * 10) + (temp % 10);
 			temp = temp/10;
 		}
-		return power(n);
+		return power(n, reverse);
 	}
 	
 	/*
@@ -25,6 +25,7 @@ class Solution {
 		}
 	}
 	*/
+	// Iterative
 	public int power(int n, int p) {
 		if (p == 0)
 			return 1;
