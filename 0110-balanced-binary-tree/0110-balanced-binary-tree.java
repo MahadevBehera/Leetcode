@@ -16,17 +16,20 @@
 class Solution {
     public boolean isBalanced(TreeNode root) {
         // Base case, when no node then return true
+        /*
         if (root == null) {
             return true;
         }
-
+        
         int leftHeight = height(root.left);
         int rightHeight = height(root.right);
-
+        
         if (Math.abs(leftHeight - rightHeight) > 1) {
             return false;
         }
         return isBalanced(root.left) && isBalanced(root.right);
+        */
+        return height(root) != -1;
     }
 
     private int height(TreeNode root) {
@@ -35,7 +38,17 @@ class Solution {
             return 0;
         }
         int leftHeight = height(root.left);
+        if (leftHeight == -1) {
+            return -1;
+        }
         int rightHeight = height(root.right);
+        if (rightHeight == -1) {
+            return -1;
+        }
+
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return -1;
+        }
 
         return Math.max(leftHeight, rightHeight) + 1; // +1 for adding current node also 
     }
