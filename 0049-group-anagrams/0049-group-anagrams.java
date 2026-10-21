@@ -2,9 +2,13 @@ class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
         for (String s : strs) {
-            char[] chars = s.toCharArray();
-            Arrays.sort(chars); // O(nlogn)
-            String key = new String(chars);
+            char[] frequencyArr = new char[26];
+            //Count frequency of each letter in the String
+            for (char c : s.toCharArray()) {
+                frequencyArr[c - 'a']++;
+            }
+            // frequencyArr is a char array, so String will be formed using the characters
+            String key = new String(frequencyArr);
             if (!map.containsKey(key)) {
                 map.put(key, new ArrayList<>());
             }
@@ -14,7 +18,7 @@ class Solution {
     }
 
     /*
-    Time complexity: O(m * nlogn)
+    Time complexity: O(m * n)
     Space complexity: O(mn)
     */
 }
