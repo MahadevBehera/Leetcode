@@ -1,21 +1,28 @@
 class Solution {
     public boolean isHappy(int n) {
-        Set<Integer> seen = new HashSet<>();
+        // if the number is not Happy number,
+        // then after some time the sum repeats again so its an endless loop
+        // we can solve this using Floyd's Cycle Finding Algorithm
+        int slow = getSumOfNextNumber(n);
+        int fast = getSumOfNextNumber(getSumOfNextNumber(n));
 
-        while (!seen.contains(n)) {
-            seen.add(n); // avoid checking for same number once again
-            int sum = 0;
-            while (n != 0) {
-                int digit = (n % 10);
-                sum = sum + (digit * digit);
-                n = n / 10;
-            }
-            if (sum == 1) {
+        while (slow != fast) {
+            if (fast == 1)
                 return true;
-            }
-            n = sum; // sum is new number (n) now
+            slow = getSumOfNextNumber(slow);
+            fast = getSumOfNextNumber(getSumOfNextNumber(fast));
         }
-        return false;
+        return slow == 1;
+    }
+
+    private int getSumOfNextNumber(int n) {
+        int sum = 0;
+        while (n != 0) {
+            int digit = (n % 10);
+            sum = sum + (digit * digit);
+            n = n / 10;
+        }
+        return sum;
     }
 }
 
