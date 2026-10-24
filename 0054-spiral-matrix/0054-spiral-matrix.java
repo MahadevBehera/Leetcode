@@ -22,7 +22,7 @@ class Solution {
             switch (direction) {
                 case 0 -> {
                     // left to right
-                    // contant = row (top)
+                    // constant = row (top)
                     for (int i = left; i <= right; i++) {
                         result.add(matrix[top][i]);
                     }
@@ -31,7 +31,7 @@ class Solution {
 
                 case 1 -> {
                     // top to bottom
-                    // contant = column (right)
+                    // constant = column (right)
                     for (int i = top; i <= bottom; i++) {
                         result.add(matrix[i][right]);
                     }
@@ -40,7 +40,7 @@ class Solution {
 
                 case 2 -> {
                     // right to left
-                    // contant = row (bottom)
+                    // constant = row (bottom)
                     for (int i = right; i >= left; i--) {
                         result.add(matrix[bottom][i]);
                     }
@@ -49,7 +49,7 @@ class Solution {
 
                 case 3 -> {
                     // bottom to top
-                    // contant = column (left)
+                    // constant = column (left)
                     for (int i = bottom; i >= top; i--) {
                         result.add(matrix[i][left]);
                     }
