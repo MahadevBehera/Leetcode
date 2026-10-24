@@ -19,49 +19,53 @@ class Solution {
         List<Integer> result = new ArrayList<>();
 
         while (top <= bottom && left <= right) {
-            if (direction == 0) {
-                // left to right
-                // contant = row (top)
-                for (int i = left; i <= right; i++) {
-                    result.add(matrix[top][i]);
+            switch (direction) {
+                case 0 -> {
+                    // left to right
+                    // contant = row (top)
+                    for (int i = left; i <= right; i++) {
+                        result.add(matrix[top][i]);
+                    }
+                    top++;
                 }
-                top++;
+
+                case 1 -> {
+                    // top to bottom
+                    // contant = column (right)
+                    for (int i = top; i <= bottom; i++) {
+                        result.add(matrix[i][right]);
+                    }
+                    right--;
+                }
+
+                case 2 -> {
+                    // right to left
+                    // contant = row (bottom)
+                    for (int i = right; i >= left; i--) {
+                        result.add(matrix[bottom][i]);
+                    }
+                    bottom--;
+                }
+
+                case 3 -> {
+                    // bottom to top
+                    // contant = column (left)
+                    for (int i = bottom; i >= top; i--) {
+                        result.add(matrix[i][left]);
+                    }
+                    left++;
+                }
             }
 
-            if (direction == 1) {
-                // top to bottom
-                // contant = column (right)
-                for (int i = top; i <= bottom; i++) {
-                    result.add(matrix[i][right]);
-                }
-                right--;
-            }
-
-            if (direction == 2) {
-                // right to left
-                // contant = row (bottom)
-                for (int i = right; i >= left; i--) {
-                    result.add(matrix[bottom][i]);
-                }
-                bottom--;
-            }
-
-            if (direction == 3) {
-                // bottom to top
-                // contant = column (left)
-                for (int i = bottom; i >= top; i--) {
-                    result.add(matrix[i][left]);
-                }
-                left++;
-            }
-
-            direction++;
-            if (direction == 4) {
+            //direction++;
+            if (direction++ == 4) {
                 direction = 0;
             }
         }
         return result;
     }
+
+    // Time : O(m * n)
 }
 
 // Synced seamlessly with LeetHub Pro
