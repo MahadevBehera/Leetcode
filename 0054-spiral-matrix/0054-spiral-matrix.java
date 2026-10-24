@@ -58,7 +58,7 @@ class Solution {
             }
 
             //direction++;
-            if (direction++ == 4) {
+            if (++direction == 4) {
                 direction = 0;
             }
         }
