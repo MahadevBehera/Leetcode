@@ -8,23 +8,30 @@ class Solution {
         };
 
         int[][] result = new int[rows * cols][2];
-        int step = 0; // how much step to take
+        int steps = 0; // how much step to take
         int dir = 0; // will be used to choose the index from directions[][]
         int cellCount = 0;
-        result[cellCount++] = new int[] { rStart, cStart }; // starting cell storing into result
+        // starting cell storing into result
+        // result[cellCount++] = new int[] { rStart, cStart };
+        result[cellCount][0] = rStart;
+        result[cellCount][1] = cStart;
+        cellCount++;
 
         // doing -1 because we already store first cell data in result as starting cell
         while (cellCount < (rows * cols)) {
             if (dir == 0 || dir == 2) {
                 // for EAST and WEST we need to increase step by 1 then spiral will be formed from inside to outer side
-                step++;
+                steps++;
             }
 
-            for (int i = 0; i < step; i++) {
+            for (int stepCount = 0; stepCount < steps; stepCount++) {
                 rStart = rStart + directions[dir][0];
                 cStart = cStart + directions[dir][1];
                 if ((rStart >= 0 && rStart < rows) && (cStart >= 0 && cStart < cols)) {
-                    result[cellCount++] = new int[] { rStart, cStart };
+                    // result[cellCount++] = new int[] { rStart, cStart };
+                    result[cellCount][0] = rStart;
+                    result[cellCount][1] = cStart;
+                    cellCount++;
                 }
             }
 
