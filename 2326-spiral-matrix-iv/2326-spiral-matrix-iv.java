@@ -22,44 +22,32 @@ class Solution {
 
         while (head != null) {
             // move left -> right
-            for (int i = left; i <= right; i++) {
-                if (head != null) {
-                    result[top][i] = head.val;
-                    head = head.next;
-                }
+            for (int i = left; i <= right && head != null; i++) {
+                result[top][i] = head.val;
+                head = head.next;
             }
             top++;
 
             // move top -> bottom 
-            for (int i = top; i <= bottom; i++) {
-                if (head != null) {
-                    result[i][right] = head.val;
-                    head = head.next;
-                }
+            for (int i = top; i <= bottom && head != null; i++) {
+                result[i][right] = head.val;
+                head = head.next;
             }
             right--;
 
             // move right -> left
-            if (top <= bottom) { // if only 1 row is there, then it's already covered by left to right
-                for (int i = right; i >= left; i--) {
-                    if (head != null) {
-                        result[bottom][i] = head.val;
-                        head = head.next;
-                    }
-                }
-                bottom--;
+            for (int i = right; i >= left && head != null; i--) {
+                result[bottom][i] = head.val;
+                head = head.next;
             }
+            bottom--;
 
             // move bottom -> top
-            if (left <= right) { // if only 1 column is there, then it's already covered by top to bottom
-                for (int i = bottom; i >= top; i--) {
-                    if (head != null) {
-                        result[i][left] = head.val;
-                        head = head.next;
-                    }
-                }
-                left++;
+            for (int i = bottom; i >= top && head != null; i--) {
+                result[i][left] = head.val;
+                head = head.next;
             }
+            left++;
         }
 
         return result;
