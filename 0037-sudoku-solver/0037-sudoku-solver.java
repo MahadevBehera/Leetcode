@@ -54,11 +54,14 @@ class Solution {
     Here total Cells = 9 * 9 = 81
     We are visiting each cell means 81 cells
     For each cell the possibility of digits are from 1 to 9, means 9 possible digits
-
+    
     Suppose, there are 9 cells and for each cell there are 2 possibilies then the total number of unique combinations for the 9 cells is 2^9 = 512.
-
+    
     Similarly here, the total unique combinations we try for 81 cells is 9^81
-    So, time complexity for the solution = O(9^81) = O(constant)
+    So, Time complexity for the solution = O(9^81) = O(constant)
+    For Space complexity, we will invoke max of 9*9 = 81 recursive calls for the method solve()
+    
+    Time: O(9^(81)), Space: O(81)
     */
 }
 
