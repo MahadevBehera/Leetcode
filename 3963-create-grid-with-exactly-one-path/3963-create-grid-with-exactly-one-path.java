@@ -1,7 +1,7 @@
 class Solution {
     public String[] createGrid(int m, int n) {
         String[] grid = new String[m];
-        
+
         /*
         row = 4 (m) and column = 5 (n)
         grid =
@@ -10,14 +10,23 @@ class Solution {
          " # # # # . ",       ⟵ "#" * 4 + "." 
          " # # # # . "]       ⟵ "#" * 4 + "." 
          */
-         
-        String firstRow = ".".repeat(n);
-        grid[0] = firstRow;
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            sb.append('.');
+        }
+        // First Row
+        grid[0] = sb.toString();
+        sb.setLength(0);
+
+        for (int i = 1; i < n; i++) {
+            sb.append('#');
+        }
+        sb.append('.');
 
         for (int i = 1; i < m; i++) {
-            grid[i] = "#".repeat(n - 1) + ".";
+            grid[i] = sb.toString();
         }
-
         return grid;
     }
 }
