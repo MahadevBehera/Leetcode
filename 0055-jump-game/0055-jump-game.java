@@ -1,26 +1,19 @@
 class Solution {
     public boolean canJump(int[] nums) {
         int n = nums.length;
-        // Using Bottom-up approach
-        boolean[] mem = new boolean[n];
-        /*
-        if mem[i] = true, then I can reach till i index
-        if mem[i] = false, then I can't reach till i index
-        */
-        mem[0] = true; // As I am already standing at index 0, so mem[0] is always true and I can reach 0 index as mentioned in question
-        solve(nums, n, mem);
-        return mem[n - 1];
-    }
-
-    private void solve(int[] nums, int n, boolean[] mem) {
-        for (int i = 1; i < n; i++) {
-            for (int j = i - 1; j >= 0; j--) {
-                if ((mem[j] == true) && (j + nums[j] >= i)) {
-                    mem[i] = true;
-                    break;
-                }
+        // Using Efficient approach
+        int maxReachable = 0; // as we are already standing in 0 index
+        for (int i = 0; i < n; i++) {
+            // so far for previous elements/jumps, the maxReachable is less than i, so we can't reach i index
+            if (i > maxReachable) {
+                return false;
             }
+
+            maxReachable = Math.max(maxReachable, (i + nums[i]));
         }
+
+        // if the loop completed and we didn't returned false, then we are already reached the end index (n-1)
+        return true;
     }
 }
 
