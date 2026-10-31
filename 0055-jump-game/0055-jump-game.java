@@ -1,28 +1,22 @@
 class Solution {
     public boolean canJump(int[] nums) {
         int n = nums.length;
-        // Using DP
-        int[] mem = new int[10001]; // 10^4 -> so for safe side took +1
-        return solve(nums, 0, n, mem);
+        // Using Bottom-up approach
+        boolean[] mem = new boolean[n];
+        mem[0] = true;
+        solve(nums, n, mem);
+        return mem[n - 1];
     }
 
-    private boolean solve(int[] nums, int index, int n, int[] mem) {
-        if (index == n - 1) {
-            return true;
-        }
-
-        if (mem[index] != 0) {
-            return mem[index] == 1 ? true : false;
-        }
-
-        for (int i = 1; i <= nums[index]; i++) {
-            if (solve(nums, index + i, n, mem)) {
-                mem[index] = 1;
-                return true;
+    private void solve(int[] nums, int n, boolean[] mem) {
+        for (int i = 1; i < n; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if ((mem[j] == true) && (j + nums[j] >= i)) {
+                    mem[i] = true;
+                    break;
+                }
             }
         }
-        mem[index] = 2;
-        return false;
     }
 }
 
