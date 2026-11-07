@@ -4,7 +4,7 @@ class Solution {
             return true;
         }
         int low = 1;
-        int high = num;
+        int high = num / 2;
 
         while (low <= high) {
             int mid = low + ((high - low) / 2);
