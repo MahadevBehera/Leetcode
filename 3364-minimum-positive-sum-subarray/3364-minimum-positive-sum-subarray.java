@@ -22,6 +22,11 @@ class Solution {
         }
         return result == Integer.MAX_VALUE ? -1 : result;
     }
+
+    /*
+    Time: O(n * (r - l + 1))
+    Space: O(n)
+    */
 }
 
 // Synced seamlessly with LeetHub Pro
