@@ -2,11 +2,20 @@ class Solution {
     public int minimumSumSubarray(List<Integer> nums, int l, int r) {
         int result = Integer.MAX_VALUE;
         int n = nums.size();
+        // prefix sum
+        int[] prefix = new int[n + 1];
         for (int i = 0; i < n; i++) {
-            int sum = 0;
-            for (int j = i; j < n && ((j - i + 1) <= r); j++) {
-                sum = sum + nums.get(j);
-                if (l <= (j - i + 1) && sum > 0) {
+            prefix[i + 1] = prefix[i] + nums.get(i);
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int len = l; (len <= r); len++) {
+                int j = i + len;
+                if (j > prefix.length - 1) {
+                    break;
+                }
+                int sum = prefix[j] - prefix[i];
+                if (sum > 0) {
                     result = Math.min(result, sum);
                 }
             }
