@@ -1,5 +1,6 @@
 class Solution {
     public boolean checkString(String s) {
+        /*
         if (s.charAt(0) == 'b') {
             return !s.contains("a");
         }
@@ -8,8 +9,8 @@ class Solution {
                 return false;
             }
         }
-
-        return true;
+        */
+        return !s.contains("ba");
     }
 }
 
