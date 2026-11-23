@@ -1,30 +1,19 @@
 class Solution {
     public int climbStairs(int n) {
-        int[] mem = new int[n + 1]; // memoization
-        return solve(n, mem);
+        if ((n == 1) || (n == 2)) {
+            return n;
+        }
+        // Bottom-up approach
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 2;
+
+        for (int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
     }
-
-    private int solve(int n, int[] mem) {
-        if (n < 0) {
-            return 0;
-        }
-
-        if (mem[n] > 0) {
-            return mem[n];
-        }
-
-        if (n == 0 || n == 1) {
-            return 1; // we have got 1 way to cover all stairs
-        }
-
-        int one_step = solve(n - 1, mem);
-        int two_step = solve(n - 2, mem);
-        mem[n] = one_step + two_step;
-
-        return mem[n];
-    }
-
-    // Time : O(2^n)
 }
 
 // Synced seamlessly with LeetHub Pro
