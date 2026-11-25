@@ -16,24 +16,28 @@
 class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> result = new ArrayList<>();
-        traverse(root, "", result);
+        traverse(root, new StringBuilder(), result);
         return result;
     }
 
-    public void traverse(TreeNode root, String path, List<String> result) {
-        if (root == null) {
+    public void traverse(TreeNode root, StringBuilder path, List<String> result) {
+        if(root == null) {
             return;
         }
 
-        path += root.val;
+        int len=path.length();
+        path.append(root.val);
 
         if (root.left == null && root.right == null) {
-            result.add(path);
-        } else {
-            path += "->";
-            traverse(root.left, path, result);
-            traverse(root.right, path, result);
+            result.add(path.toString());
         }
+
+        path.append("->");
+        traverse(root.left, path, result);
+        traverse(root.right, path, result);
+
+        // Backtrack: remove current node from path
+        path.setLength(len);
     }
 }
 
