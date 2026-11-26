@@ -4,13 +4,17 @@ class Solution {
         int ans = 0;
 
         for (int i = 0; i < n; i++) {
-            long product = 1;
-            long gcd = 0;
-            long lcm = 1;
-            for (int j = i; j < n; j++) {
+            long product = nums[i];
+            long gcd = nums[i];
+            long lcm = nums[i];
+            for (int j = i + 1; j < n; j++) {
                 product = product * nums[j];
                 gcd = findGcd(gcd, nums[j]);
                 lcm = findLcm(lcm, nums[j]);
+
+                if (product > (gcd * lcm)) {
+                    break;
+                }
                 // product equivalent condition --> prod(arr) == lcm(arr) * gcd(arr)
                 if (product == (gcd * lcm)) {
                     ans = Math.max(ans, (j - i + 1));
