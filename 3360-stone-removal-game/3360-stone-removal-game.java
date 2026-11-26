@@ -1,19 +1,18 @@
 class Solution {
     public boolean canAliceWin(int n) {
-        int alice = 10;
-        while (alice >= 0) {
-            if (n >= alice) {
-                n = n - alice;
-            } else {
-                return false;
-            }
+        int take = 10;
+        int step = 0;
 
-            if (n >= (alice - 1)) {
-                n = n - (alice - 1);
-            } else {
-                break;
-            }
-            alice = alice - 2;
+        while (n >= take) {
+            n = n - take;
+            take--;
+            step++;
+        }
+        // Alice -> Bob -> Alice -> Bob
+        // odd steps means Alice able to remove stones for that step
+        // even steps means Bob able to remove stones for that step
+        if ((step % 2) == 0) {
+            return false;
         }
         return true;
     }
